@@ -1,5 +1,6 @@
 .DS_Store
 .hbuilderx
+unpackage
 manifest.json
 node_modules
 /dist
