@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "Marco & June",
-  "usingComponents": {
-    "invitation": "/components/Invitation"
-  }
-}
