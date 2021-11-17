@@ -1,9 +1,9 @@
 <template>
   <div class="wedding">
-    <div class="mainWarp" @click="handleOpenPack">
-    <img class="dot" :class="playing?'spin':''" src="../../images/musicdot.png" @click.stop="handlePlayOrPause"> 
+    <div class="mainWarp" @tap="handleOpenPack">
+    <img class="dot" :class="playing?'spin':''" src="../../images/musicdot.png" @tap.stop="handlePlayOrPause"> 
     <invitation :canOpen="canOpen" @onClose="canOpen = false, hasClosed = true" />
-    <audio src="../../music/cnm.mp3" id="player" loop autoplay preload/>
+    <audio  id="player" loop  preload/>
     </div>
   </div>
 </template>
@@ -24,10 +24,11 @@
 		music:null
       }      
     },
-	onLoad(){
+	onShow(){
 		this.music = uni.createInnerAudioContext();
+		console.log(this.music)
 		this.music.autoplay = true;
-		this.music.src = 'https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-hello-uniapp/2cc220e0-c27a-11ea-9dfb-6da8e309e0d8.mp3';
+		this.music.src = 'https://cdn.jsdelivr.net/gh/mayanming696/CDN/music/Perfect.mp3';
 		this.music.onPlay(() => {
 		  this.playing=true
 		});
@@ -35,6 +36,10 @@
 		  console.log(res.errMsg);
 		  console.log(res.errCode);
 		});
+		
+	},
+	onHide(){
+		this.music.destroy()
 	},
     methods: {
       handleOpenPack () {
@@ -50,46 +55,7 @@
         }
       }
     },
-    mounted() {
-      // swipeInit(function(direction) {
-      //   let crt = this.crtPage;
-      //   let num = this.pageNum;        
-      //   let next;
-      //   if(direction === 'up' && (crt + 1) < num) {          
-      //     next = crt + 1;          
-      //   } else if(direction === 'down' && (crt - 1) >= 0){
-      //     next = crt - 1;
-      //   } else {
-      //     return ;
-      //   }
-      //   this.crtPage = next;
-      //   for(let i = 0; i < num; i++) {
-      //     document.querySelector(`.page${i}`).style.transform = `translate(0, ${100 * (i - next)}%)`
-      //   }
-      // }.bind(this));
-      // const player = document.querySelector('#player');
-      // document.addEventListener("WeixinJSBridgeReady", function () { 
-      //   this.hasClick = true;
-      //   player.play(); 
-        
-      // }, false);
-      // document.body.addEventListener('click', () => {
-      //   if(!this.hasClick) {
-      //     this.hasClick = true;
-      //     player.play();
-      //   }       
-      // });
-      // let $audio = document.getElementById('player');
-      // $audio.addEventListener("playing", function() {
-      //   document.querySelector(`.dot`).className = "dot spin";
-      //   this.playing = true;
-      // }.bind(this));
-      // $audio.addEventListener("pause", function() {
-      //   document.querySelector(`.dot`).className = "dot";
-      //   this.playing = false;
-      // }.bind(this));
-    },
-    // name: 'Wedding'
+    mounted() {},
   }
 
 </script>
