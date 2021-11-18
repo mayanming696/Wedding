@@ -91,17 +91,17 @@
 
 	@keyframes heartbeat {
 		0% {
-			transform:scale(0.8, 0.8);
+			transform: scale(0.8, 0.8);
 			opacity: 1;
 		}
 
 		25% {
-			transform:scale(1, 1);
+			transform: scale(1, 1);
 			opacity: 0.8;
 		}
 
 		100% {
-			transform:scale(0.8, 0.8);
+			transform: scale(0.8, 0.8);
 			opacity: 1;
 		}
 	}
@@ -132,12 +132,12 @@
 
 		.weddingImage {
 			position: absolute;
-			left:calc(50% - 175upx);
+			left: calc(50% - 175upx);
 			top: 50%;
 			height: 50%;
 			width: 350upx;
 			height: 130upx;
-			animation:heartbeat 1s infinite;
+			animation: heartbeat 1s infinite;
 		}
 	}
 </style>
