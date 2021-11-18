@@ -26,7 +26,10 @@
 								</swiper-item>
 							</swiper>
 							<p><span style="font-weight:bold;">Marco & June</span></p>
-							<p style="font-weight:bold;">时间：2021-12-25</p>
+							<div class="saveDate" :style="{backgroundImage: `url(${imageURL})`}">
+								<!-- <image class="saveImage" mode="aspectFit" src="../images/titlewrap.png"></image> -->
+								<p style="font-weight:bold;">2021-12-25</p>
+							</div>
 							<p>地点：<span style="font-weight:bold;">深圳市坪山区我愿意咖啡屋</span></p>
 							<div class="content-inside-bless">
 								<div style="margin-top: 50upx;">
@@ -35,7 +38,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="cover-inside-left" :class="{'opening':isOpening}"></div>
+					<div class="cover-inside-left" :class="{'opening':isOpening}">
+						<image class="logoImage" mode="aspectFit" src="https://cdn.jsdelivr.net/gh/mayanming696/CDN/wedding/logo.png"></image>
+					</div>
 					<div class="cover-inside-right" :class="{'opening':isOpening}"></div>
 					<img class="cover-inside-seal" src="@/images/seal.png" @tap="openInvitation"
 						:class="{'invitation-flight':isOpening}">
@@ -53,7 +58,8 @@
 				isOpening: false,
 				wish: '',
 				isFocused: false,
-				hasEntered: false
+				hasEntered: false,
+				imageURL:'https://cdn.jsdelivr.net/gh/mayanming696/CDN/wedding/titlewrap.png'
 			}
 		},
 		methods: {
@@ -71,7 +77,23 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+	@keyframes logoHeader {
+		0% {
+			transform:rotate(-15deg) scale(0.8, 0.8);
+			opacity: 1;
+		}
+	
+		25% {
+			transform:rotate(-15deg) scale(1, 1);
+			opacity: 0.8;
+		}
+	
+		100% {
+			transform:rotate(-15deg) scale(0.8, 0.8);
+			opacity: 1;
+		}
+	}
 	.componentsWarp {
 		height: 100%;
 		width: 100%;
@@ -143,6 +165,21 @@
 						text-align: center;
 						overflow: hidden;
 						z-index: 9999;
+						.saveDate{
+							width: 100;
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							align-items: center;
+							background-size:cover;
+							background-position: center center;
+							background-size: 100% 100%;
+							width: 100%;
+							height: 130upx;
+							>p{
+								margin-top: 40upx;
+							}
+						}
 						.swiper {
 							width: 100%;
 							height: 40%;
@@ -161,11 +198,9 @@
 							height: 100%;
 							z-index: 2!important;
 						}
-
 						p {
 							display: flex;
 							margin-top: 0;
-							margin-bottom: 25upx;
 							word-break: keep-all;
 							white-space: nowrap;
 							font-size: 30upx;
@@ -219,7 +254,12 @@
 					z-index: 6;
 					transition: transform 0.5s;
 					transform-origin: 0 50%;
-
+					.logoImage{
+						width: 250upx;
+						height: 250upx;
+						transform:rotate(-15deg);
+						animation:logoHeader 1s infinite;
+					}
 					&.opening {
 						transform: rotate3d(0, 1, 0, -140deg);
 					}
